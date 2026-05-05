@@ -35,10 +35,8 @@ exports.handler = async (event) => {
 
   try {
     if (action === "rss") {
-      // Fetch and parse RSS feed
       const { body } = await fetchUrl(rssUrl);
 
-      // Parse RSS items
       const items = [];
       const itemRegex = /<item>([\s\S]*?)<\/item>/g;
       let match;
@@ -63,8 +61,6 @@ exports.handler = async (event) => {
       };
 
     } else if (action === "fetch_article") {
-      // Return empty - article text fetching doesn't work reliably
-      // The RSS description will be used instead
       return {
         statusCode: 200,
         headers: { "Content-Type": "text/html" },
