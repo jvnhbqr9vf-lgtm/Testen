@@ -63,12 +63,12 @@ exports.handler = async (event) => {
       };
 
     } else if (action === "fetch_article") {
-      // Fetch article text
-      const { body } = await fetchUrl(articleUrl);
+      // Return empty - article text fetching doesn't work reliably
+      // The RSS description will be used instead
       return {
         statusCode: 200,
         headers: { "Content-Type": "text/html" },
-        body,
+        body: "",
       };
     }
 
